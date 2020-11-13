@@ -4,7 +4,7 @@ import Link from 'umi/link'
 import router from 'umi/router'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from './container.less'
-
+import { connect } from 'dva'
 
 class Container extends React.Component {
   componentDidUpdate(prevProps) {
@@ -25,7 +25,8 @@ class Container extends React.Component {
       <div className={styles.nav}>
         <Link to='/'>首页</Link>
         <Link to='/info'>信息</Link>
-        <a onClick={this.onPush}>学校</a>
+        <a onClick={this.onPush}>返回首页</a>
+        <Link to='/tool'>工具</Link>
       </div>
       <div className={styles.content}>
         {this.props.children}
@@ -33,4 +34,4 @@ class Container extends React.Component {
     </div>
   }
 }
-export default withRouter(Container)
+export default withRouter(connect()(Container))
