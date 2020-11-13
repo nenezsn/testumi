@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "start": "umi dev",
-    "build": "cross-env UMI_ENV=cloud umi build",
+    "build": "umi build",
+    "cloud": "cross-env UMI_ENV=cloud umi build",
     "test": "umi test",
     "lint": "eslint {src,mock,tests}/**/*.{js,jsx} --fix",
     "precommit": "lint-staged"
