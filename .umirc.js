@@ -18,16 +18,13 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      dva: {
-        dynamicImport:{ webpackChunkName: true } //model按需加载
-      },
+      dva:true,
       dynamicImport: {
         loadingComponent: './components/PageLoading/index',
         webpackChunkName: true,
       }, //component按需加载
       title: 'myapp',
       dll: false,
-
       routes: {
         exclude: [
           /models\//,
