@@ -1,7 +1,7 @@
 import Cal from '../../components/cal'
 export default function(){
   function getLazyModule(){
-    import('../../util/index').then(data=>{
+    import(/* webpackChunkName:"util" */'../../util/index').then(data=>{
       data.default(1,2)
     })
   }
