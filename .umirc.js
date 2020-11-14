@@ -25,6 +25,9 @@ export default {
       }, //component按需加载
       title: 'myapp',
       dll: false,
+      headScripts:[
+        {src:'<%= PUBLIC_PATH %>a.js'}
+      ],
       routes: {
         exclude: [
           /models\//,
@@ -36,11 +39,24 @@ export default {
       },
     }],
   ],
+  extraBabelPlugins:[
+    // ["transform-remove-console", { "exclude": [ "error", "warn", "info"] }]
+  ],
+
   proxy:{
     "/test": {
       "target": "https://tapi.seentao.com",
       "changeOrigin": true,
       "pathRewrite": { "^/test" : "" }
     }
-  }
+  },
+  "theme": {
+    "@primary-color": "#1DA57A"
+  },
+  "define": {
+    "process.env.TEST": 1,
+  },
+  // "theme": "./theme-config.js"
+  // history: 'hash',
+  // outputPath:'./this',
 }

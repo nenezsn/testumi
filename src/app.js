@@ -11,7 +11,8 @@ export function patchRoutes(routes) {
 }
 // 延迟渲染，先做鉴权
 export function render(oldRender) {
-  setTimeout(oldRender, 1000);
+  // setTimeout(oldRender, 1000);
+  oldRender()
 }
 // 可以用于做埋点
 export function onRouteChange({ location, routes, action }) {
