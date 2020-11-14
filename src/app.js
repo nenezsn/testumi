@@ -7,7 +7,7 @@ export const dva = {
   },
 };
 export function patchRoutes(routes) {
-  console.log('routes',routes)
+  // console.log('routes',routes)
 }
 // 延迟渲染，先做鉴权
 export function render(oldRender) {
@@ -15,5 +15,9 @@ export function render(oldRender) {
 }
 // 可以用于做埋点
 export function onRouteChange({ location, routes, action }) {
-  console.log('loaction',location)
+  // console.log('loaction',location)
 }
+
+// export const request = {
+//   prefix: 'https://pvp.qq.com',
+// };

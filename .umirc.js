@@ -8,7 +8,7 @@ export default {
       component: '../layouts/container',
       routes: [
         { path: '/', component: '../pages/index',Routes:['./src/routes/auth.js'] },
-        { path: '/info', component: '../pages/info' },
+        { path: '/info/:age', component: '../pages/info' },
         { path: '/tool', component: '../pages/tool/count' },
         { path: '/lazy', component: '../pages/lazy/index' },
       ]
@@ -22,8 +22,8 @@ export default {
         dynamicImport:{ webpackChunkName: true } //model按需加载
       },
       dynamicImport: {
+        loadingComponent: './components/PageLoading/index',
         webpackChunkName: true,
-        loadingComponent: '@/components/loading.js',
       }, //component按需加载
       title: 'myapp',
       dll: false,
@@ -39,4 +39,11 @@ export default {
       },
     }],
   ],
+  proxy:{
+    "/test": {
+      "target": "https://tapi.seentao.com",
+      "changeOrigin": true,
+      "pathRewrite": { "^/test" : "" }
+    }
+  }
 }
