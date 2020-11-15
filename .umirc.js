@@ -25,9 +25,9 @@ export default {
       }, //component按需加载
       title: 'myapp',
       dll: false,
-      headScripts:[
-        {src:'<%= PUBLIC_PATH %>a.js'}
-      ],
+      // headScripts:[
+      //   {src:'<%= PUBLIC_PATH %>a.js'}
+      // ],
       routes: {
         exclude: [
           /models\//,
