@@ -1,4 +1,3 @@
-
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
@@ -56,6 +55,16 @@ export default {
   "define": {
     "process.env.TEST": 1,
   },
+  "externals": {
+    "react": "window.React",
+    "react-dom": "window.ReactDOM",
+    "jquery" : "window.jQuery"
+  },
+  // chainWebpack:(config)=> {
+  //   config.plugin('friendly-errors-webpack-plugin').use(
+  //     new FriendlyErrorsWebpackPlugin()
+  //   )
+  // }
   // "theme": "./theme-config.js"
   // history: 'hash',
   // outputPath:'./this',
