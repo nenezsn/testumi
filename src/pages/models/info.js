@@ -13,7 +13,7 @@ export default {
     }
   },
   effects: {
-    *getApp({ payload }, { call, put, select }) {
+    *getApp({ payload }, { call, put, select,fork }) {/*fork不阻塞*/
       const data = yield call(request,'school/schoolAnalysis.province.get',{name:1})
       console.log('data', data)
       return 123
