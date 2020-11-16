@@ -16,6 +16,7 @@ export default {
     *getApp({ payload }, { call, put, select }) {
       const data = yield call(request,'school/schoolAnalysis.province.get',{name:1})
       console.log('data', data)
+      return 123
     }
   },
   subscriptions: {

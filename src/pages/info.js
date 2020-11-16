@@ -37,6 +37,8 @@ function Info({ location, history, match, info, dispatch }) {
   function getSchool2() {
     dispatch({
       type: 'info/getApp'
+    }).then(res=>{
+      console.log('res',res)
     })
   }
   return <div>
