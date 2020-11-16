@@ -3,13 +3,14 @@ export default {
   treeShaking: true,
   routes: [
     {
-      path: '/',
+      path: '',
       component: '../layouts/container',
       routes: [
-        { path: '/', component: '../pages/index',Routes:['./src/routes/auth.js'] },
+        { path: '/', component: '../pages/index',Routes:['./src/pages/auth.js'] },
         { path: '/info/:age', component: '../pages/info' },
-        { path: '/tool', component: '../pages/tool/count' },
+        { path: '/tool', component: '../pages/count' },
         { path: '/lazy', component: '../pages/lazy/index' },
+        { path: '*', component: '../pages/404' },
       ]
     }
   ],

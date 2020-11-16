@@ -1,9 +1,6 @@
 import { extend } from "umi-request";
-function querystring(body) {
-  return Object.keys(body).map(item => {
-    return `${item}=${body[item]}`
-  }).join('&')
-}
+import querystring from 'querystring'
+
 const request = extend({
   prefix: "/test/",
   timeout: 1000, //超时取消处理
@@ -11,18 +8,18 @@ const request = extend({
     'Content-Type': 'application/x-www-form-urlencoded'
   },
   errorHandler: function (error) {
-    const { response={} } = error
-    if(response.status <200 ||
-      response.status > 300){
-        return {
-          code:response.status,
-          msg:'有问题接口:'+response.url+':'+response.statusText
-        }
+    const { response = {} } = error
+    if (response.status < 200 ||
+      response.status > 300) {
+      return {
+        code: response.status,
+        msg: '有问题接口:' + response.url + ':' + response.statusText
       }
+    }
   }
 });
-export default function(url,params={}){
+export default function (url, params = {}) {
   return request.post(url, {
-    body: querystring(params)
+    body: querystring.stringify(params)
   })
 }

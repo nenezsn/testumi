@@ -24,7 +24,6 @@ class Container extends React.Component {
       <div className={styles.nav}>
         <Link to='/'>首页</Link>
         <Link to='/info/2'>信息</Link>
-        <a onClick={this.onPush}>返回首页</a>
         <Link to='/tool'>工具</Link>
         <Link to='/lazy'>懒加载</Link>
       </div>
