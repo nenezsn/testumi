@@ -7,7 +7,7 @@ export default {
       component: '../layouts/container',
       routes: [
         { path: '/', component: '../pages/index',Routes:['./src/pages/auth.js'] },
-        { path: '/info/:age', component: '../pages/info' },
+        { path: '/info/:age', component: '../pages/info/info' },
         { path: '/tool', component: '../pages/count' },
         { path: '/lazy', component: '../pages/lazy/index' },
         { path: '*', component: '../pages/404' },
