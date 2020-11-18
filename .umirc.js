@@ -1,4 +1,5 @@
 // ref: https://umijs.org/config/
+const path = require('path')
 export default {
   treeShaking: true,
   routes: [
@@ -65,6 +66,11 @@ export default {
     "react": "window.React",
     "react-dom": "window.ReactDOM",
     "jquery": "window.jQuery"
+  },
+  alias:{
+    '@utils':path.resolve('./src/util'),
+    '@components':path.resolve('./src/components'),
+    '@pages':path.resolve('./src/pages'),
   },
   chainWebpack: (config) => {
     // config.plugin('friendly-errors-webpack-plugin').use(
