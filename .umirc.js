@@ -70,7 +70,7 @@ export default {
     // config.plugin('friendly-errors-webpack-plugin').use(
     //   new FriendlyErrorsWebpackPlugin()
     // )
-
+    config.module.rules.store.delete('eslint')//禁用eslint
     // 无配置的情况下，默认都会打到一个vendors里面，不管引用了多少次
     // 配置的情况下，不满足单独分割的话，会打到当前的chunk下
     config.optimization.splitChunks({
