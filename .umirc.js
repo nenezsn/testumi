@@ -6,7 +6,11 @@ export default {
       path: '',
       component: '../layouts/container',
       routes: [
-        { path: '/', component: '../pages/index',Routes:['./src/pages/auth.js'] },
+        {
+          path: '/', component: '../pages/index',
+          Routes: ['./src/pages/auth.js'],
+          routes: [{ path: '/', component: '../pages/demo' }]
+        },
         { path: '/info/:age', component: '../pages/info/info' },
         { path: '/tool', component: '../pages/count' },
         { path: '/lazy', component: '../pages/lazy/index' },
@@ -18,10 +22,11 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      dva:true,
+      dva: true,
       dynamicImport: {
         loadingComponent: './components/PageLoading/index',
         webpackChunkName: true,
+        level: 2
       }, //component按需加载
       title: 'myapp',
       dll: false,
@@ -39,15 +44,15 @@ export default {
       },
     }],
   ],
-  extraBabelPlugins:[
+  extraBabelPlugins: [
     // ["transform-remove-console", { "exclude": [ "error", "warn", "info"] }]
   ],
 
-  proxy:{
+  proxy: {
     "/test": {
       "target": "https://tapi.seentao.com",
       "changeOrigin": true,
-      "pathRewrite": { "^/test" : "" }
+      "pathRewrite": { "^/test": "" }
     }
   },
   "theme": {
@@ -59,9 +64,9 @@ export default {
   "externals": {
     "react": "window.React",
     "react-dom": "window.ReactDOM",
-    "jquery" : "window.jQuery"
+    "jquery": "window.jQuery"
   },
-  chainWebpack:(config)=> {
+  chainWebpack: (config) => {
     // config.plugin('friendly-errors-webpack-plugin').use(
     //   new FriendlyErrorsWebpackPlugin()
     // )
@@ -70,7 +75,7 @@ export default {
     // 配置的情况下，不满足单独分割的话，会打到当前的chunk下
     config.optimization.splitChunks({
       // minSize: 290000,// jquery 280kb 不会被打包到verdors。
-      minChunks:2,//至少被2个chunk引用，生成新的chunk
+      minChunks: 2,//至少被2个chunk引用，生成新的chunk
     })
   }
   // "theme": "./theme-config.js"

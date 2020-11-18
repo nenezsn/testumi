@@ -1,4 +1,4 @@
-function Index() {
-  return <div>首页</div>
+function Index(props) {
+return <div><h3>首页</h3>{props.children}</div>
 }
 export default Index
