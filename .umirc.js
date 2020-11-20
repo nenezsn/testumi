@@ -2,6 +2,9 @@
 const path = require('path')
 export default {
   treeShaking: true,
+  context:{
+    mode:'local'
+  },
   routes: [
     {
       path: '',
@@ -48,7 +51,6 @@ export default {
   extraBabelPlugins: [
     // ["transform-remove-console", { "exclude": [ "error", "warn", "info"] }]
   ],
-
   proxy: {
     "/test": {
       "target": "https://tapi.seentao.com",
