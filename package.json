@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "umi dev",
-    "build": "umi build",
+    "build": "COMPRESS=none umi build",
     "ana": "ANALYZE=1 umi build",
     "cloud": "cross-env UMI_ENV=cloud umi build",
     "test": "umi test",
