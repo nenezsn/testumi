@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva'
+import _ from 'lodash'
 class Count extends Component {
   add=()=>{
     this.props.dispatch({

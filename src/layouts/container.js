@@ -26,6 +26,8 @@ class Container extends React.Component {
         <Link to='/info/2'>信息</Link>
         <Link to='/tool'>工具</Link>
         <Link to='/lazy'>懒加载</Link>
+        <Link to='/page1'>page1</Link>
+        <Link to='/page2'>page2</Link>
       </div>
       <div className={styles.content}>
         {this.props.children}

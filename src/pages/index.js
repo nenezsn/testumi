@@ -3,7 +3,7 @@ import Child from '@components/child'
 function Index(props) {
 return <div>
     <h3>首页</h3>
-    <Child/>    
+    <Child/>
     {props.children}</div>
 }
 export default Index
