@@ -2,27 +2,38 @@
 const path = require('path')
 export default {
   treeShaking: true,
-  context:{
-    mode:'local'
-  },
   routes: [
-    {
-      path: '',
-      component: '../layouts/container',
-      routes: [
-        {
-          path: '/', component: '../pages/index',
-          Routes: ['./src/pages/auth.js']
-        },
-        { path: '/info/:age', component: '../pages/info/info' },
-        { path: '/tool', component: '../pages/count/count' },
-        { path: '/lazy', component: '../pages/lazy/index' },
-        { path: '/page1', component: '../pages/page1' },
-        { path: '/page2', component: '../pages/page2' },
-        { path: '*', component: '../pages/404' },
-      ]
-    }
-  ],
+    {path:'/',component:'./CaseDevelopmentHome'},
+    {path:'/enterpriseCaseList',component:'./enterpriseCaseList'},
+    {path:'/HelpCenter',component:'./HelpCenter'},
+    {path:'/EnterpriseCaseList',component:'./enterpriseCaseList'},
+    {path:'/Developing',component:'./developing'},
+    {path:'/PersonnelFiles',component:'./developing'},
+    {path:'/ProductFile',component:'./developing'},
+    {path:'/SupplierFile',component:'./developing'},
+    {path:'/CustomerFile',component:'./developing'},
+    {path:'/BankAccountFile',component:'./developing'},
+    {path:'/RulesRegulations',component:'./developing'},
+    {path:'/enterpriseInfo',component:'./enterpriseInfo'},
+    {path:'/erpInformation',component:'./erpInformation'},
+    {path:'/CaseDevelopment',component:'./CaseDevelopment'},
+    {path:'/organization',component:'./organization'},
+    {path:'/TaskList',component:'./taskList'},
+    {path:'/AccountingSubjects',component:'./accountingSubjects'},
+    {path:'/assessedBill',component:'./document'},
+    {path:'/documentAnswerSet',component:'./documentAnswerSet'},
+    {path:'/rejectOptionConfig',component:'./rejectOptionConfig'},
+    {path:'/PBUDocumentAnswerSet',component:'./pBUDocumentAnswerSet'},
+    {path:'/mPDFViewer',component:'./mPDFViewer'},
+    {path:'/PBUDocumentDataInit',component:'./pBUDocumentDataInit'},
+    {path:'/PBUDocumentU8Init',component:'../components/PBUDocumentDataInit/PBUDocumentU8Init'},
+    {path:'/Weights',component:'./Weights'},
+    {path:'/Preview',component:'./Preview'},
+    {path:'/DataView',component:'./CourseLearning'},
+    {path:'/ResourcePreset',component:'./ResourcePreset'},
+    {path:'/TaskConfig',component:'./taskConfig'},
+    {path:'/NotFound',component:'./NotFound'}
+    ],
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
@@ -49,26 +60,12 @@ export default {
       },
     }],
   ],
-  extraBabelPlugins: [
-    // ["transform-remove-console", { "exclude": [ "error", "warn", "info"] }]
-  ],
   proxy: {
     "/test": {
       "target": "https://tapi.seentao.com",
       "changeOrigin": true,
       "pathRewrite": { "^/test": "" }
     }
-  },
-  "theme": {
-    "@primary-color": "#1DA57A"
-  },
-  "define": {
-    "process.env.TEST": 1,
-  },
-  "externals": {
-    "react": "window.React",
-    "react-dom": "window.ReactDOM",
-    // "jquery": "window.jQuery"
   },
   alias:{
     '@utils':path.resolve('./src/util'),
@@ -77,18 +74,7 @@ export default {
     '@util':path.resolve('./src/util'),
   },
   chainWebpack: (config) => {
-    // config.plugin('friendly-errors-webpack-plugin').use(
-    //   new FriendlyErrorsWebpackPlugin()
-    // )
     config.module.rules.store.delete('eslint')//禁用eslint
-    // 无配置的情况下，默认都会打到一个vendors里面，不管引用了多少次
-    // 配置的情况下，不满足单独分割的话，会打到当前的chunk下
-    // config.optimization.splitChunks({
-      // minSize: 290000,// jquery 280kb 不会被打包到verdors。
-      // minChunks: 3,//至少被2个chunk引用，生成新的chunk
-    // })
   }
-  // "theme": "./theme-config.js"
-  // history: 'hash',
-  // outputPath:'./this',
+
 }
