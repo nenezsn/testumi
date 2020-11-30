@@ -12,6 +12,7 @@ export default {
       routes: [
         {
           path: '/', component: '../pages/index',
+          title:'首页',
           Routes: ['./src/pages/auth.js']
         },
         { path: '/info/:age', component: '../pages/info/info' },
@@ -31,9 +32,11 @@ export default {
       dynamicImport: {
         loadingComponent: './components/PageLoading/index',
         webpackChunkName: true,
-        level: 2
+        level: 2//取决于routes的层级
       }, //component按需加载
-      title: 'myapp',
+      title:{
+        defaultTitle:'test-umi'
+      },
       dll: false,
       locale: {
         default: 'zh-CN',
