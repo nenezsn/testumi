@@ -1,9 +1,7 @@
 import React from 'react';
 import dynamic from 'umi/dynamic';
 const App = dynamic({
-  loader: async function () {
-    return () => <div>I will render after 1s</div>;
-  },
+  loader: import(/* webpackChunkName:"util" */'@components/son'),
   loading: function () {
     return <div>正在加载请稍等。。。。</div>
   }
