@@ -12,11 +12,10 @@ export default {
       routes: [
         {
           path: '/', component: '../pages/index',
-          Routes: ['./src/pages/auth.js'],
-          routes: [{ path: '/', component: '../pages/demo' }]
+          Routes: ['./src/pages/auth.js']
         },
         { path: '/info/:age', component: '../pages/info/info' },
-        { path: '/tool', component: '../pages/count' },
+        { path: '/tool', component: '../pages/count/count' },
         { path: '/lazy', component: '../pages/lazy/index' },
         { path: '*', component: '../pages/404' },
       ]
@@ -73,18 +72,19 @@ export default {
     '@utils':path.resolve('./src/util'),
     '@components':path.resolve('./src/components'),
     '@pages':path.resolve('./src/pages'),
+    '@util':path.resolve('./src/util'),
   },
   chainWebpack: (config) => {
     // config.plugin('friendly-errors-webpack-plugin').use(
     //   new FriendlyErrorsWebpackPlugin()
     // )
     config.module.rules.store.delete('eslint')//禁用eslint
+
     // 无配置的情况下，默认都会打到一个vendors里面，不管引用了多少次
-    // 配置的情况下，不满足单独分割的话，会打到当前的chunk下
-    config.optimization.splitChunks({
-      // minSize: 290000,// jquery 280kb 不会被打包到verdors。
-      minChunks: 2,//至少被2个chunk引用，生成新的chunk
-    })
+
+    // 此情况下，会生成一个verdors~(引用过的chunk).async.js 按需加载
+    //config.optimization.splitChunks({})
+
   }
   // "theme": "./theme-config.js"
   // history: 'hash',
