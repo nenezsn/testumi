@@ -10,6 +10,9 @@ export default {
     },
     sub(state,action){
       return Object.assign({},state,{count:state.count-1})
+    },
+    mul(state){
+      state.count *=2
     }
   },
 

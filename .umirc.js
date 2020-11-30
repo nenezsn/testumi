@@ -25,7 +25,9 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      dva: true,
+      dva: {
+        immer:true
+      },
       dynamicImport: {
         loadingComponent: './components/PageLoading/index',
         webpackChunkName: true,
@@ -33,6 +35,10 @@ export default {
       }, //component按需加载
       title: 'myapp',
       dll: false,
+      locale: {
+        default: 'zh-CN',
+        antd: true
+      },
       // headScripts:[
       //   {src:'<%= PUBLIC_PATH %>a.js'}
       // ],

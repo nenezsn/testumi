@@ -1,36 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'dva'
 import _ from 'lodash'
-class Count extends Component {
-  add=()=>{
-    this.props.dispatch({
-      type:'tool/add'
-    })
-  }
-  sub=()=>{
-    this.props.dispatch({
-      type:'tool/sub'
-    })
-  }
-  componentDidMount(){
-    console.log('g_app._store',window.g_app._store.getState())
+import { useDispatch } from 'react-redux'
+function Count(props) {
+  const add = () => {
     window.g_app._store.dispatch({
-      type:'tool/add'
+      type: 'tool/add'
     })
   }
-  render() {
-    return (
-      <div>
-          <h4>{this.props.tool.count}</h4>
-          <button onClick={this.add}>加</button>
-          <button onClick={this.sub}>减</button>
-      </div>
-    );
+  const sub = () => {
+    props.dispatch({
+      type: 'tool/sub'
+    })
   }
+const dispatch = useDispatch()
+  const mul = () => {
+    dispatch({
+      type: 'tool/mul'
+    })
+  }
+
+  return <div>
+    <h4>{props.tool.count}</h4>
+    <button onClick={add}>加</button>
+    <button onClick={sub}>减</button>
+    <button onClick={mul}>乘</button>
+  </div>
 }
-const mapStateToProps=function(state){
+const mapStateToProps = function (state) {
   return {
-    tool:state.tool
+    tool: state.tool
   }
 }
 export default connect(mapStateToProps)(Count);
