@@ -71,7 +71,8 @@ export default {
     '@utils':path.resolve('./src/util'),
     '@components':path.resolve('./src/components'),
     '@pages':path.resolve('./src/pages'),
-    '@util':path.resolve('./src/util'),
+    '@services': path.resolve('./src/services'),
+    '@util':path.resolve('./src/utils'),
   },
   chainWebpack: (config) => {
     config.module.rules.store.delete('eslint')//禁用eslint
