@@ -37,7 +37,10 @@ export default {
       title:{
         defaultTitle:'test-umi'
       },
-      dll: false,
+      dll: {
+        exclude: [],
+        include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch', 'antd/es','react','react-dom'] //感觉写不写都一样啊
+      },
       locale: {
         default: 'zh-CN',
         antd: true
