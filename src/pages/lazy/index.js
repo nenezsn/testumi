@@ -1,27 +1,30 @@
 import React from 'react';
 import dynamic from 'umi/dynamic';
 const App = dynamic({
-  loader: import(/* webpackChunkName:"util" */'@components/son'),
+  loader: ()=>import(/* webpackChunkName:"util" */'@components/child'),
+  // loader: ()=>new Promise(resolve=>setTimeout(() => {
+  //   resolve()
+  // }, 3000)).then(data=>import(/* webpackChunkName:"util" */'@components/child')),
   loading: function () {
     return <div>正在加载请稍等。。。。</div>
   }
 });
-class Index extends React.Component {
-  state = {
-    flag: false
-  }
-  getLazyModule = () => {
-    import(/* webpackChunkName:"util" */'../../util/index').then(data => {
+
+function Index() {
+  const [flag, setflag] = React.useState(false)
+  const getLazyModule = () => {
+    import(/* webpackChunkName:"util" */'@utils/index').then(data => {
       data.default(1, 2)
     })
   }
-  render() {
-    return <div>
-      <button onClick={this.getLazyModule}>按需加载模块</button>
-      <button onClick={() => this.setState({ flag: !this.state.flag })}>加载</button>
-      {<App />}
-    </div>
+  const getLazyCom = () => {
+    setflag(!flag)
   }
+  return <div>
+    <button onClick={getLazyModule}>按需加载模块</button>
+    <button onClick={getLazyCom}>按需加载组件</button>
+    {flag && <App />}
+  </div>
 }
 
 export default Index
