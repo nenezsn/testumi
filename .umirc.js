@@ -1,5 +1,6 @@
 // ref: https://umijs.org/config/
 const path = require('path')
+// const CompressionPlugin = require('compression-webpack-plugin')
 export default {
   treeShaking: true,
   context:{
@@ -89,6 +90,15 @@ export default {
   chainWebpack: (config) => {
     // config.plugin('friendly-errors-webpack-plugin').use(
     //   new FriendlyErrorsWebpackPlugin()
+    // )
+    // config.plugin('compression-webpack-plugin').use(
+    //   new CompressionPlugin({
+    //     // filename: 文件名称，这里我们不设置，让它保持和未压缩的文件同一个名称
+    //     algorithm: 'gzip', // 指定生成gzip格式
+    //     test: new RegExp('\\.(' + ['js','css'].join('|') + ')$'), // 匹配哪些格式文件需要压缩
+    //     threshold: 10240, //对超过10k的数据进行压缩
+    //     minRatio: 0.6 // 压缩比例，值为0 ~ 1
+    //   })
     // )
     config.module.rules.store.delete('eslint')//禁用eslint
 
