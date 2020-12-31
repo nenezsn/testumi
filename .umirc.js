@@ -59,6 +59,7 @@ export default {
         ],
       },
     }],
+    ['./log']
   ],
   extraBabelPlugins: [
     // ["transform-remove-console", { "exclude": [ "error", "warn", "info"] }]
