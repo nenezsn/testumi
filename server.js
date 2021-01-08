@@ -4,6 +4,8 @@ const proxy = require('express-http-proxy');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const compression = require('compression')
+const urljoin = require('url-join')
+const querystring = require('querystring')
 
 const app = express()
 app.use(bodyParser.json());
@@ -21,7 +23,6 @@ app.use('*', proxy('https://tapi.seentao.com', {
   proxyReqBodyDecorator: function (bodyContent, srcReq) {
     return querystring.stringify(bodyContent);
   },
-  preserveHostHdr: true,
   filter: function (req, res) {
     return req.method == 'POST';
   }
