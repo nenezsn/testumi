@@ -88,6 +88,9 @@ export default {
     '@pages':path.resolve('./src/pages'),
     '@util':path.resolve('./src/util'),
   },
+  cssLoaderOptions:{
+    localIdentName:'[local]'  //import './demo.css' 用于直接引入 但会存在变量污染问题
+  },
   chainWebpack: (config) => {
     // config.plugin('friendly-errors-webpack-plugin').use(
     //   new FriendlyErrorsWebpackPlugin()
