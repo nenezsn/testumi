@@ -3,8 +3,8 @@ const path = require('path')
 // const CompressionPlugin = require('compression-webpack-plugin')
 export default {
   treeShaking: true,
-  context:{
-    mode:'local'
+  context: {
+    mode: 'local'
   },
   routes: [
     {
@@ -13,7 +13,7 @@ export default {
       routes: [
         {
           path: '/', component: '../pages/index',
-          title:'首页',
+          title: '首页',
           Routes: ['./src/pages/auth.js']
         },
         { path: '/info/:age', component: '../pages/info/info' },
@@ -28,19 +28,19 @@ export default {
     ['umi-plugin-react', {
       antd: true,
       dva: {
-        immer:true
+        immer: true
       },
       dynamicImport: {
         loadingComponent: './components/PageLoading/index',
         webpackChunkName: true,
         level: 2//取决于routes的层级
       }, //component按需加载
-      title:{
-        defaultTitle:'test-umi'
+      title: {
+        defaultTitle: 'test-umi'
       },
       dll: {
         exclude: [],
-        include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch', 'antd/es','react','react-dom'] //感觉写不写都一样啊
+        include: ['dva', 'dva/router', 'dva/saga', 'dva/fetch', 'antd/es', 'react', 'react-dom'] //感觉写不写都一样啊
       },
       locale: {
         default: 'zh-CN',
@@ -82,14 +82,14 @@ export default {
     "react-dom": "window.ReactDOM",
     "jquery": "window.jQuery"
   },
-  alias:{
-    '@utils':path.resolve('./src/util'),
-    '@components':path.resolve('./src/components'),
-    '@pages':path.resolve('./src/pages'),
-    '@util':path.resolve('./src/util'),
+  alias: {
+    '@utils': path.resolve('./src/util'),
+    '@components': path.resolve('./src/components'),
+    '@pages': path.resolve('./src/pages'),
+    '@util': path.resolve('./src/util'),
   },
-  cssLoaderOptions:{
-    localIdentName:'[local]'  //import './demo.css' 用于直接引入 但会存在变量污染问题
+  cssLoaderOptions: {
+    localIdentName: '[local]'  //import './demo.css' 用于直接引入 但会存在变量污染问题
   },
   chainWebpack: (config) => {
     // config.plugin('friendly-errors-webpack-plugin').use(
@@ -105,7 +105,14 @@ export default {
     //   })
     // )
     config.module.rules.store.delete('eslint')//禁用eslint
-
+    // 自定义loader
+    // config.module.rule('replace-loader')
+    //   .test(/wangbing\.js/)
+    //   .include
+    //   .add([path.resolve('src')])
+    //   .end()
+    //   .use(path.resolve('loaders/const'))
+    //   .loader(path.resolve('loaders/const'));
     // 无配置的情况下，默认都会打到一个vendors里面，不管引用了多少次
 
     // 此情况下，会生成一个verdors~(引用过的chunk).async.js 按需加载
