@@ -1,6 +1,7 @@
 // ref: https://umijs.org/config/
 const path = require('path')
 // const CompressionPlugin = require('compression-webpack-plugin')
+const DiyPlugin = require('./plugins/index.js');
 export default {
   treeShaking: true,
   context: {
@@ -113,6 +114,9 @@ export default {
     //   .end()
     //   .use(path.resolve('loaders/const'))
     //   .loader(path.resolve('loaders/const'));
+    // 自定义plugin
+    // config.plugin(path.resolve('plugins/index')).use(new DiyPlugin())
+
     // 无配置的情况下，默认都会打到一个vendors里面，不管引用了多少次
 
     // 此情况下，会生成一个verdors~(引用过的chunk).async.js 按需加载
