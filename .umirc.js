@@ -7,6 +7,7 @@ export default {
   context: {
     mode: 'local'
   },
+  hash:true,
   routes: [
     {
       path: '',
