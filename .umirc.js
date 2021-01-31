@@ -93,6 +93,7 @@ export default {
     localIdentName: '[local]'  //import './demo.css' 用于直接引入 但会存在变量污染问题
   },
   chainWebpack: (config) => {
+    // console.log('webpack Config', config.toConfig())
     // config.plugin('friendly-errors-webpack-plugin').use(
     //   new FriendlyErrorsWebpackPlugin()
     // )
